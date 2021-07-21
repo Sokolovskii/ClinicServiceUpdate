@@ -21,7 +21,8 @@ BEGIN
 	CREATE TABLE Avatars
 	(
 		[Id] INT NOT NULL,
-		[Photo] IMAGE NOT NULL
+		[Photo] IMAGE NOT NULL,
+		[IsActive] BIT
 
 		CONSTRAINT PK_Avatars PRIMARY KEY(Id)
 	)
@@ -34,7 +35,8 @@ BEGIN
 	CREATE TABLE TypesOfRequests
 	(
 		[Id] INT NOT NULL,
-		[Name] NVARCHAR(150) NOT NULL
+		[Name] NVARCHAR(150) NOT NULL,
+		[IsActive] BIT
 	
 		CONSTRAINT PK_TypesOfRequests PRIMARY KEY(Id)
 	)
@@ -75,7 +77,8 @@ BEGIN
 	(
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(150) NOT NULL,
-		[Id_Depends] INT
+		[Id_Depends] INT,
+		[IsActive] BIT
 	
 		CONSTRAINT PK_Rights PRIMARY KEY(Id),
 		CONSTRAINT FK_Rights_to_Rights FOREIGN KEY(Id_Depends) REFERENCES Rights(Id)
@@ -91,7 +94,8 @@ BEGIN
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(150) NOT NULL,
 		[Description] NVARCHAR(MAX) NOT NULL,
-		[Id_Depends] INT
+		[Id_Depends] INT,
+		[IsActive] BIT
 
 		CONSTRAINT PK_Departments PRIMARY KEY(Id),
 		CONSTRAINT FK_Departments_to_Departments FOREIGN KEY(Id_Depends) REFERENCES Departments(Id)
@@ -106,6 +110,7 @@ BEGIN
 	(
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(150) UNIQUE NOT NULL,
+		[IsActive] BIT,
 
 		CONSTRAINT PK_ClearanceLevel PRIMARY KEY(Id)
 	)
@@ -149,7 +154,7 @@ BEGIN
 	(
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(100) NOT NULL,
-		[Login] NVARCHAR(100) NOT NULL,
+		[Login] NVARCHAR(100) UNIQUE NOT NULL,
 		[Pass_Hash] NVARCHAR(MAX) NOT NULL,
 		[EMail] NVARCHAR(100),
 		[Avatar_Id] INT,
