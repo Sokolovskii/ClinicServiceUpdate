@@ -42,33 +42,6 @@ BEGIN
 	)
 END
 
-IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-	WHERE TABLE_NAME = 'Schedules')
-BEGIN
-	CREATE TABLE Schedules
-	(
-		[Id] INT NOT NULL,
-		[Monday_Begining] TIME,
-		[Monday_Ending] TIME,
-		[Tuesday_Begining] TIME,
-		[Tuesday_Ending] TIME,
-		[Wednesday_Begining] TIME,
-		[Wednesday_Ending] TIME,
-		[Thursday_Begining] TIME,
-		[Thursday_Ending] TIME,
-		[Friday_Begining] TIME,
-		[Friday_Ending] TIME,
-		[Saturday_Begining] TIME,
-		[Saturday_Ending] TIME,
-		[Sunday_Begining] TIME,
-		[Sunday_Ending] TIME,
-		[Actualisation_Date] DATE NOT NULL
-
-		CONSTRAINT PK_Schedules PRIMARY KEY(Id)
-	)
-END
-
-
 GO
 IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 	WHERE TABLE_NAME = 'Rights')
@@ -158,13 +131,39 @@ BEGIN
 		[Pass_Hash] NVARCHAR(MAX) NOT NULL,
 		[EMail] NVARCHAR(100),
 		[Avatar_Id] INT,
-		[Schedule_Id] INT,
 		[Position_Id] INT
 		
 		CONSTRAINT PK_Users PRIMARY KEY(Id),
-		CONSTRAINT KF_Users_To_Schedule FOREIGN KEY(Schedule_Id) REFERENCES Schedules(Id),
 		CONSTRAINT FK_Users_To_Position FOREIGN KEY(Position_Id) REFERENCES Position(Id),
 		CONSTRAINT FK_USERS_To_Avatar FOREIGN KEY(Avatar_Id) REFERENCES Avatars(Id)
+	)
+END
+
+IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = 'Schedules')
+BEGIN
+	CREATE TABLE Schedules
+	(
+		[Id] INT NOT NULL,
+		[UserId] INT NOT NULL,
+		[Monday_Begining] TIME,
+		[Monday_Ending] TIME,
+		[Tuesday_Begining] TIME,
+		[Tuesday_Ending] TIME,
+		[Wednesday_Begining] TIME,
+		[Wednesday_Ending] TIME,
+		[Thursday_Begining] TIME,
+		[Thursday_Ending] TIME,
+		[Friday_Begining] TIME,
+		[Friday_Ending] TIME,
+		[Saturday_Begining] TIME,
+		[Saturday_Ending] TIME,
+		[Sunday_Begining] TIME,
+		[Sunday_Ending] TIME,
+		[Actualisation_Date] DATE NOT NULL
+
+		CONSTRAINT PK_Schedules PRIMARY KEY(Id)
+		CONSTRAINT FK_Schedules_To_Users FOREIGN KEY(UserId) REFERENCES Users(Id),
 	)
 END
 
@@ -189,3 +188,20 @@ BEGIN
 	)
 END
 
+IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = 'Sessions')
+BEGIN
+	CREATE TABLE Sessions
+	(
+		[Id] INT NOT NULL,
+		[Client_Id] INT NOT NULL,
+		[Doctor_Id] INT NOT NULL,
+		[DateTimeOfBegin] DATETIME2 NOT NULL,
+		[SessionTime] TIME NOT NULL,
+		[Status] BIT,
+
+		CONSTRAINT PK_Sessions PRIMARY KEY(Id),
+		CONSTRAINT FK_Client_To_Users FOREIGN KEY(Client_Id) REFERENCES Users(Id),
+		CONSTRAINT FK_Doctor_To_Users FOREIGN KEY(Doctor_Id) REFERENCES Users(Id),
+	)
+END
