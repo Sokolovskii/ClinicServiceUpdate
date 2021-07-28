@@ -4,11 +4,11 @@ GO
 --===================
 --Author: Sokolovskiy Alexander
 --Date: 28.07.21
---Description: Убирает отдел из видимости
+--Description: Удаляет роль
 --===================
 
-CREATE PROCEDURE DeleteDepartment
+CREATE PROCEDURE [dbo].[DeleteRole]
 	@Id INT
 AS
-DELETE FROM dbo.Departments
+DELETE FROM dbo.Roles
 WHERE Id = @Id

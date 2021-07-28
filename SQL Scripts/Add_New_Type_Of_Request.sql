@@ -10,5 +10,5 @@ GO
 CREATE PROCEDURE AddNewTypeOfRequest
 	@TypeName NVARCHAR(150)
 AS
-	INSERT INTO dbo.TypesOfRequests(Name)
-	VALUES(@TypeName)
+	INSERT INTO dbo.TypesOfRequests(Name, IsActive)
+	VALUES(@TypeName, 1)

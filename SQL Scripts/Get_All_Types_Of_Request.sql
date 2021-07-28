@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 21.07.21
+--Date: 28.07.21
 --Description: Возвращает все категории заявок
 --================
 
@@ -13,3 +13,4 @@ AS
 		[Id],
 		[Name]
 	FROM dbo.TypesOfRequests
+	WHERE IsActive = 1

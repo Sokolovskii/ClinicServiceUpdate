@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 21.07.21
+--Date: 28.07.21
 --Description: Возвращает Аватар по Id пользователя
 --===================
 
@@ -13,6 +13,5 @@ AS
 
 SELECT
 	Photo
-FROM dbo.Avatars a
-JOIN dbo.Users u on u.Avatar_Id = a.Id
-WHERE u.Id = @UserId
+FROM dbo.Avatars
+WHERE UserId = @UserId

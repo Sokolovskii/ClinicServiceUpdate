@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 22.07.21
+--Date: 28.07.21
 --Description: Выводит всех юзеров с указанной должностью
 --===================
 
@@ -13,11 +13,12 @@ AS
 
 SELECT 
 	u.Id,
-	u.Name,
+	u.Name UserName,
 	a.Photo,
-	d.Name
+	p.Name PositionName,
+	d.Name DepartmentName
 FROM dbo.Users u 
-LEFT JOIN dbo.Avatars a on a.Id = u.Avatar_Id
+LEFT JOIN dbo.Avatars a on a.UserId = u.Id
 JOIN dbo.Position p on u.Position_Id = p.Id
-JOIN dbo.Departments d on d.Id = p.Department_Id
+JOIN dbo.Departments d on d.Id = p.DepartmentId
 WHERE p.Id = @Id
