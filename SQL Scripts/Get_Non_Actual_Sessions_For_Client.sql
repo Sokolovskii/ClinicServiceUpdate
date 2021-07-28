@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 28.07.21
+--Date: 29.07.21
 --Description: Возвращает все прошедшие записи к клиенту
 --===================
 
@@ -15,10 +15,10 @@ AS
 SELECT
 	s.Id,
 	s.DateTimeOfBegin,
-	s.SessionTime,
+	s.DateTimeOfEnding,
 	u.Name DoctorName,
 	p.Name PositionName
 FROM dbo.Sessions s
 JOIN dbo.Users u ON u.Id = s.Doctor_Id
 JOIN dbo.Position p ON u.Position_Id = p.Id
-WHERE s.Client_Id = @ClientId AND DATEDIFF(MINUTE, DateTimeOfBegin, @ActualDateTime) > DATEPART(MINUTE, SessionTime)
+WHERE s.Client_Id = @ClientId AND @ActualDateTime > DateTimeOfEnding

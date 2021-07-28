@@ -15,7 +15,7 @@ AS
 SELECT
 	s.Id,
 	s.DateTimeOfBegin,
-	s.SessionTime,
+	s.DateTimeOfEnding,
 	(SELECT 
 		[Name] 
 	FROM dbo.Users 

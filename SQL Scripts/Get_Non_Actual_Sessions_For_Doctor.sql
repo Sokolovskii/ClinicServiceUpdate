@@ -15,10 +15,10 @@ AS
 SELECT
 	s.Id,
 	s.DateTimeOfBegin,
-	s.SessionTime,
+	s.DateTimeOfEnding,
 	(SELECT 
 		[Name] 
 	FROM dbo.Users 
 	WHERE Id = s.Client_Id) AS Client_Name
 FROM dbo.Sessions s
-WHERE s.Doctor_Id = @DoctorId AND DATEDIFF(MINUTE, DateTimeOfBegin, @ActualDateTime) > DATEPART(MINUTE, SessionTime)
+WHERE s.Doctor_Id = @DoctorId AND @ActualDateTime > DateTimeOfEnding

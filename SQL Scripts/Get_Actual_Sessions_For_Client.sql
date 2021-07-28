@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 28.07.21
+--Date: 29.07.21
 --Description: Возвращает все актуальные записи клиента
 --===================
 
@@ -15,7 +15,7 @@ AS
 SELECT
 	s.Id,
 	s.DateTimeOfBegin,
-	s.SessionTime,
+	s.DateTimeOfEnding,
 	u.Name DoctorName,
 	p.Name PositionName
 FROM dbo.Sessions s
