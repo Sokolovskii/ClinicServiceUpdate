@@ -16,20 +16,6 @@ USE [ClinicService]
 
 GO
 IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-	WHERE TABLE_NAME = 'Avatars')
-BEGIN
-	CREATE TABLE Avatars
-	(
-		[Id] INT NOT NULL,
-		[Photo] IMAGE NOT NULL,
-		[IsActive] BIT
-
-		CONSTRAINT PK_Avatars PRIMARY KEY(Id)
-	)
-END
-
-GO
-IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 	WHERE TABLE_NAME = 'TypesOfRequests')
 BEGIN
 	CREATE TABLE TypesOfRequests
@@ -60,6 +46,19 @@ END
 
 GO
 IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = 'Roles')
+BEGIN
+	CREATE TABLE Roles
+	(
+		[Id] INT NOT NULL,
+		[Name] NVARCHAR(150) UNIQUE NOT NULL,
+
+		CONSTRAINT PK_Roles PRIMARY KEY(Id)
+	)
+END
+
+GO
+IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 	WHERE TABLE_NAME = 'Departments')
 BEGIN
 	CREATE TABLE Departments
@@ -67,40 +66,25 @@ BEGIN
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(150) NOT NULL,
 		[Description] NVARCHAR(MAX) NOT NULL,
-		[Id_Depends] INT,
-		[IsActive] BIT
+		[SubordinateId] INT
 
 		CONSTRAINT PK_Departments PRIMARY KEY(Id),
-		CONSTRAINT FK_Departments_to_Departments FOREIGN KEY(Id_Depends) REFERENCES Departments(Id)
+		CONSTRAINT FK_Departments_to_Departments FOREIGN KEY(SubordinateId) REFERENCES Departments(Id)
 	)
 END
 
 GO
 IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-	WHERE TABLE_NAME = 'ClearanceLevel')
+	WHERE TABLE_NAME = 'Politics')
 BEGIN
-	CREATE TABLE ClearanceLevel
+	CREATE TABLE Politics
 	(
-		[Id] INT NOT NULL,
-		[Name] NVARCHAR(150) UNIQUE NOT NULL,
-		[IsActive] BIT,
-
-		CONSTRAINT PK_ClearanceLevel PRIMARY KEY(Id)
-	)
-END
-
-GO
-IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-	WHERE TABLE_NAME = 'Clearance')
-BEGIN
-	CREATE TABLE Clearance
-	(
-		[Id_Level] INT NOT NULL,
-		[Id_Right] INT NOT NULL,
+		[RoleId] INT NOT NULL,
+		[RightId] INT NOT NULL,
 		[RightIsActive] BIT NOT NULL
 
-		CONSTRAINT FK_Clearance_To_ClearanceLevel FOREIGN KEY(Id_Level) REFERENCES ClearanceLevel(Id),
-		CONSTRAINT FK_Clearance_To_Rights FOREIGN KEY(Id_Right) REFERENCES Rights(Id)
+		CONSTRAINT FK_Clearance_To_ClearanceLevel FOREIGN KEY(RoleId) REFERENCES Roles(Id),
+		CONSTRAINT FK_Clearance_To_Rights FOREIGN KEY(RightId) REFERENCES Rights(Id)
 	)
 END
 
@@ -112,10 +96,10 @@ BEGIN
 	(
 		[Id] INT NOT NULL,
 		[Name] NVARCHAR(100) NOT NULL,
-		[Department_Id] INT NOT NULL,
-		[Clearance_Level_Id] INT NOT NULL,
+		[DepartmentId] INT NOT NULL
 
 		CONSTRAINT PK_Position PRIMARY KEY(Id)
+		CONSTRAINT FK_Position_To_Department FOREIGN KEY(DepartmentId) REFERENCES Departments(Id)
 	)
 END
 
@@ -130,12 +114,25 @@ BEGIN
 		[Login] NVARCHAR(100) UNIQUE NOT NULL,
 		[Pass_Hash] NVARCHAR(MAX) NOT NULL,
 		[EMail] NVARCHAR(100),
-		[Avatar_Id] INT,
-		[Position_Id] INT
+		[Position_Id] INT,
+		[RoleId] INT
 		
 		CONSTRAINT PK_Users PRIMARY KEY(Id),
 		CONSTRAINT FK_Users_To_Position FOREIGN KEY(Position_Id) REFERENCES Position(Id),
-		CONSTRAINT FK_USERS_To_Avatar FOREIGN KEY(Avatar_Id) REFERENCES Avatars(Id)
+		CONSTRAINT FK_Users_To_Role FOREIGN KEY(RoleId) REFERENCES Roles(Id)
+	)
+END
+
+GO
+IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+	WHERE TABLE_NAME = 'Avatars')
+BEGIN
+	CREATE TABLE Avatars
+	(
+		[UserId] INT NOT NULL,
+		[Photo] IMAGE NOT NULL
+
+		CONSTRAINT FK_Avatars_To_Users FOREIGN KEY(UserId) REFERENCES Users(Id)
 	)
 END
 
@@ -197,8 +194,7 @@ BEGIN
 		[Client_Id] INT NOT NULL,
 		[Doctor_Id] INT NOT NULL,
 		[DateTimeOfBegin] DATETIME2 NOT NULL,
-		[SessionTime] TIME NOT NULL,
-		[Status] BIT,
+		[DateTimeOfEnding] DATETIME2 NOT NULL
 
 		CONSTRAINT PK_Sessions PRIMARY KEY(Id),
 		CONSTRAINT FK_Client_To_Users FOREIGN KEY(Client_Id) REFERENCES Users(Id),
