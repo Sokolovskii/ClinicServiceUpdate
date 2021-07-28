@@ -9,8 +9,7 @@ GO
 
 CREATE PROCEDURE AddNewPosition
 	@Name NVARCHAR(100),
-	@Department_Id INT,
-	@Clearance_Level_Id INT
+	@DepartmentId INT
 AS
-	INSERT INTO dbo.Position(Name, Department_Id, Clearance_Level_Id) 
-	VALUES(@Name, @Department_Id, @Clearance_Level_Id)
+	INSERT INTO dbo.Position(Name, DepartmentId) 
+	VALUES(@Name, @DepartmentId)

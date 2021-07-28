@@ -3,7 +3,7 @@ GO
 
 --===================
 --Author: Sokolovskiy Alexander
---Date: 22.07.21
+--Date: 28.07.21
 --Description: Возвращает должность по Id
 --===================
 
@@ -13,10 +13,7 @@ AS
 SELECT 
 	p.Name,
 	d.Id,
-	d.Name,
-	cl.Id,
-	cl.Name
+	d.Name
 FROM dbo.Position p
-JOIN dbo.Departments d on p.Department_Id = d.Id
-JOIN dbo.ClearanceLevel cl on p.Clearance_Level_Id = cl.Id
+JOIN dbo.Departments d on p.DepartmentId = d.Id
 WHERE p.Id = @Id

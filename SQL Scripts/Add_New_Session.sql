@@ -11,8 +11,8 @@ CREATE PROCEDURE AddNewSession
 	@ClientId INT,
 	@DoctorId INT,
 	@DateTimeOfBegin DATETIME2,
-	@SessionTime TIME
+	@DateTimeOfEnding DATETIME2
 AS
 
-INSERT INTO dbo.Sessions(Client_Id, Doctor_Id, DateTimeOfBegin, SessionTime) 
-	VALUES(@ClientId, @DoctorId, @DateTimeOfBegin, @SessionTime)
+INSERT INTO dbo.Sessions(Client_Id, Doctor_Id, DateTimeOfBegin, DateTimeOfEnding) 
+	VALUES(@ClientId, @DoctorId, @DateTimeOfBegin, @DateTimeOfEnding)

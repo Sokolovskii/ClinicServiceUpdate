@@ -19,9 +19,9 @@ SELECT
 	p.Name,
 	d.Id,
 	d.Name,
-	cl.Name
+	r.Name
 FROM dbo.Users u
+JOIN dbo.Roles r ON r.Id = u.RoleId
 LEFT JOIN dbo.Position p ON p.Id = u.Position_Id
-LEFT JOIN dbo.Departments d ON d.Id = p.Department_Id
-LEFT JOIN dbo.ClearanceLevel cl ON cl.Id = p.Clearance_Level_Id
+LEFT JOIN dbo.Departments d ON d.Id = p.DepartmentId
 WHERE u.Id = @UserId

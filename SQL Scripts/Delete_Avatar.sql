@@ -11,9 +11,4 @@ CREATE PROCEDURE DeleteAvatar
 	@UserId INT
 AS
 DELETE FROM dbo.Avatars
-	WHERE Id = (SELECT Avatar_Id
-		FROM dbo.Users
-		WHERE Id = @UserId)
-UPDATE dbo.Users
-	SET Avatar_Id = 0
-	WHERE Id = @UserId
+	WHERE UserId = @UserId

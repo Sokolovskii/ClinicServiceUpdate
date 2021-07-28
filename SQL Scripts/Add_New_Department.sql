@@ -10,8 +10,8 @@ GO
 CREATE PROCEDURE AddNewDepartment
 	@Name NVARCHAR(150),
 	@Description NVARCHAR(MAX),
-	@Id_Depends INT
+	@SubordinateId INT
 AS
 
-INSERT INTO dbo.Departments(Name, Description, Id_Depends, IsActive) 
-	VALUES(@Name, @Description, @Id_Depends, 1)
+INSERT INTO dbo.Departments(Name, Description, SubordinateId) 
+	VALUES(@Name, @Description, @SubordinateId)
