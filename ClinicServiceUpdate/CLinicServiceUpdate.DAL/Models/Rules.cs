@@ -4,7 +4,8 @@ using System.Text;
 
 namespace CLinicServiceUpdate.DAL.Models
 {
-	class Rules
+	enum Rules
 	{
+
 	}
 }

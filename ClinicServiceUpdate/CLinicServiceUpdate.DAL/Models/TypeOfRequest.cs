@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CLinicServiceUpdate.DAL.Models
 {
-	class TypeOfRequest
+	enum TypeOfRequest
 	{
 	}
 }
