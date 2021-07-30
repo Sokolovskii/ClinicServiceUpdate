@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CLinicServiceUpdate.DAL.Models
 {
-	class Schedule
+	class Rules
 	{
+		public int Id { get; set; }
+		public string Name { get; set; }
 	}
 }
