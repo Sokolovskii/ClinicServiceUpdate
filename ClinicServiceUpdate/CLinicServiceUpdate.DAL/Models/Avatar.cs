@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CLinicServiceUpdate.DAL.Models.Domain
+namespace CLinicServiceUpdate.DAL.Models
 {
 	class Avatar
 	{

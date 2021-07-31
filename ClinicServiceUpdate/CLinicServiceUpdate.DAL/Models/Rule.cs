@@ -4,9 +4,10 @@ using System.Text;
 
 namespace CLinicServiceUpdate.DAL.Models
 {
-	class Rules
+	class Rule
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
+		public int DependOn { get; set; }
 	}
 }
