@@ -176,7 +176,8 @@ BEGIN
 		[Type_Id] INT NOT NULL,
 		[Content] NVARCHAR(MAX),
 		[Date_Of_Create] DATETIME2 NOT NULL,
-		[Date_Of_Complete] DATETIME2
+		[Date_Of_Complete] DATETIME2,
+		[Status] BIT
 
 		CONSTRAINT PK_Requests PRIMARY KEY(Id),
 		CONSTRAINT FK_RequestsSender_To_Users FOREIGN KEY(Sender_Id) REFERENCES Users(Id),

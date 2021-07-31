@@ -4,11 +4,12 @@ GO
 --===================
 --Author: Sokolovskiy Alexander
 --Date: 23.07.21
---Description: Возвращает актуальное расписание пользователя
+--Description: Возвращает актуальное расписание пользователя на указанную дату
 --===================
 
 CREATE PROCEDURE GetScheduleByUserId
-	@UserId INT
+	@UserId INT,
+	@ActualDate DATE
 AS
 
 SELECT
@@ -28,7 +29,4 @@ SELECT
 	s.Sunday_Ending,
 	s.Actualisation_Date
 FROM dbo.Schedules s
-WHERE UserId = @UserId AND s.Actualisation_Date = (SELECT 
-														MAX(s1.Actualisation_Date) 
-													FROM dbo.Schedules s1
-													WHERE UserId = @UserId)
+WHERE UserId = @UserId AND Actualisation_Date = (SELECT MAX(Actualisation_Date) FROM Schedules WHERE Actualisation_Date < @ActualDate )
