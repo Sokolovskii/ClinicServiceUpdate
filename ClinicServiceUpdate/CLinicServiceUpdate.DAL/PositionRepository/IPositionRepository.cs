@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.PositionRepository
@@ -26,8 +24,9 @@ namespace CLinicServiceUpdate.DAL.PositionRepository
 		/// <summary>
 		/// Добавление новой должности в базу
 		/// </summary>
-		/// <param name="position">Экземпляр должности</param>
-		void AddPosition(Position position);
+		/// <param name="name">Название должности</param>
+		/// <param name="departmentId">Идентификатор отделения, к которому прикреплена должность</param>
+		void AddPosition(string name, int departmentId);
 
 		/// <summary>
 		/// Удаление должности из базы

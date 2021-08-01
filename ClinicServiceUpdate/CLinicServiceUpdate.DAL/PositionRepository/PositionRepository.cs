@@ -7,7 +7,7 @@ namespace CLinicServiceUpdate.DAL.PositionRepository
 {
 	class PositionRepository : IPositionRepository
 	{
-		public void AddPosition(Position position)
+		public void AddPosition(string name, int departmentId)
 		{
 			throw new NotImplementedException();
 		}

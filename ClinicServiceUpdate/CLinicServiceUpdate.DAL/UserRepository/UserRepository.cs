@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.UserRepository
 {
+	/// <summary>
+	/// Реализация интерфейса репозитория пользователя
+	/// </summary>
+	/// <inheritdoc cref="IUserRepository"/>
 	class UserRepository : IUserRepository
 	{
 		public void AddNewAvatar(int userId, byte[] photo)

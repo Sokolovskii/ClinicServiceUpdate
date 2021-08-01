@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.SessionRepository
 {
 	class SessionRepository : ISessionRepository
 	{
-		public void AddNewSession(Session session)
+		public void AddNewSession(int clientId, int doctorId, DateTime DateTimeOfBegin, DateTime DateTimeOfEnd)
 		{
 			throw new NotImplementedException();
 		}

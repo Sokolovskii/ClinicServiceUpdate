@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.SessionRepository
@@ -52,7 +51,10 @@ namespace CLinicServiceUpdate.DAL.SessionRepository
 		/// <summary>
 		/// Добавление новой записи в базу
 		/// </summary>
-		/// <param name="session">Экземпляр записи</param>
-		void AddNewSession(Session session);
+		/// <param name="clientId">Идентификатор клиента</param>
+		/// <param name="doctorId">Идентификатор доктора</param>
+		/// <param name="DateTimeOfBegin">Дата и время начала сеанса</param>
+		/// <param name="DateTimeOfEnd">Дата и время конца сеанса</param>
+		void AddNewSession(int clientId, int doctorId, DateTime DateTimeOfBegin, DateTime DateTimeOfEnd);
 	}
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.DepartmentRepository
 {
 	class DepartmentRepository : IDepartmentRepository
 	{
-		public void AddDepartment(Department department)
+		public void AddDepartment(string name, string description, int subordinateId)
 		{
 			throw new NotImplementedException();
 		}
@@ -17,7 +16,7 @@ namespace CLinicServiceUpdate.DAL.DepartmentRepository
 			throw new NotImplementedException();
 		}
 
-		public List<Department> GetAllDepartments()
+		public IEnumerable<Department> GetAllDepartments()
 		{
 			throw new NotImplementedException();
 		}

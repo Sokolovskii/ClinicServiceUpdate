@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.DepartmentRepository
@@ -13,7 +11,7 @@ namespace CLinicServiceUpdate.DAL.DepartmentRepository
 		/// <summary>
 		/// Возвращает отделение по его Id
 		/// </summary>
-		/// <param name="DepartmentId">Идентификатор отделения</param>
+		/// <param name="departmentId">Идентификатор отделения</param>
 		/// <returns>Экземпляр отделения</returns>
 		Department GetDepartmentById(int departmentId);
 
@@ -21,18 +19,20 @@ namespace CLinicServiceUpdate.DAL.DepartmentRepository
 		/// Возвращает все отделения из базы
 		/// </summary>
 		/// <returns>Коллекция экземпляров отделений</returns>
-		List<Department> GetAllDepartments();
+		IEnumerable<Department> GetAllDepartments();
 
 		/// <summary>
 		/// Добавляет отделение в базу
 		/// </summary>
-		/// <param name="department">Экземпляр отделения для добавления</param>
-		void AddDepartment(Department department);
+		/// <param name="name">Название отделения</param>
+		/// <param name="description">Описание отделения</param>
+		/// <param name="subordinateId">Идентификатор </param>
+		void AddDepartment(string name, string description, int subordinateId);
 
 		/// <summary>
 		/// Удаляет отделение из базы
 		/// </summary>
-		/// <param name="DepartmentId">Идентификатор отделения</param>
+		/// <param name="departmentId">Идентификатор отделения</param>
 		void DeleteDepartment(int departmentId);
 	}
 }

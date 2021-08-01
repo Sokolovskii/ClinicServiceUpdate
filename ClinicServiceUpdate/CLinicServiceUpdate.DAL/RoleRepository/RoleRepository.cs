@@ -5,14 +5,18 @@ using CLinicServiceUpdate.DAL.Models;
 
 namespace CLinicServiceUpdate.DAL.RoleRepository
 {
+	/// <summary>
+	/// Реализация интерфейса
+	/// </summary>
+	/// <inheritdoc cref="IRoleRepository"/>
 	class RoleRepository : IRoleRepository
 	{
-		public void AddNewRole(Role role)
+		public void AddNewRole(string name, params PoliticElem[] politicElems)
 		{
 			throw new NotImplementedException();
 		}
 
-		public List<Role> GetAllRoles()
+		public IEnumerable<Role> GetAllRoles()
 		{
 			throw new NotImplementedException();
 		}
