@@ -16,10 +16,17 @@ namespace CLinicServiceUpdate.DAL.PositionRepository
 		Position GetPositionById(int positionId);
 
 		/// <summary>
+		/// Возврат всех должностей, прикрепленных к указанному отделению
+		/// </summary>
+		/// <param name="departmentId">Идентфиикатор отделения</param>
+		/// <returns>Коллекция должностей</returns>
+		IEnumerable<Position> GetPositionsByDepartmentId(int departmentId);
+
+		/// <summary>
 		/// Возврат всех должностей в базе
 		/// </summary>
 		/// <returns>Коллекция экземпляров должностей</returns>
-		List<Position> GetAllPositions();
+		IEnumerable<Position> GetAllPositions();
 
 		/// <summary>
 		/// Добавление новой должности в базу
