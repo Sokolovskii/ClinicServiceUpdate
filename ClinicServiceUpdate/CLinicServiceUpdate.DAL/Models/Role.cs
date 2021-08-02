@@ -10,7 +10,7 @@
 
 	class PoliticElem
 	{
-		public Rule Rule { get; set; }
+		public int RuleId { get; set; }
 		public bool IsActive { get; set; }
 	}
 }

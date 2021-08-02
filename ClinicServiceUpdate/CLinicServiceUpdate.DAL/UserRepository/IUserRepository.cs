@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using CLinicServiceUpdate.DAL.Models.UserModels;
 
 namespace CLinicServiceUpdate.DAL.UserRepository
 {
@@ -13,14 +13,14 @@ namespace CLinicServiceUpdate.DAL.UserRepository
 		/// </summary>
 		/// <param name="userId">Идентификатор пользователя</param>
 		/// <returns>Экземпляр пользователя</returns>
-		User GetUserById(int userId);
+		UserWithAvatar GetUserById(int userId);
 
 		/// <summary>
 		/// Возврат пользователя по логину
 		/// </summary>
 		/// <param name="login">Логин</param>
 		/// <returns>Экземпляр пользователя</returns>
-		User GetUserByLogin(string login);
+		UserWithAvatar GetUserByLogin(string login);
 
 		/// <summary>
 		/// Возврат всех пользователей, занимающих указанную должность
@@ -35,13 +35,6 @@ namespace CLinicServiceUpdate.DAL.UserRepository
 		/// <param name="departmentId">Идентификатор отделения</param>
 		/// <returns>Коллекция пользователей</returns>
 		IEnumerable<User> GetUsersByDepartment(int departmentId);
-
-		/// <summary>
-		/// Возврат аватара пользователя
-		/// </summary>
-		/// <param name="userId">Идентификатор пользователя</param>
-		/// <returns>Экземпляр аватара</returns>
-		Avatar GetAvatarByUserId(int userId);
 	
 		/// <summary>
 		/// Добавление нового пользователя
