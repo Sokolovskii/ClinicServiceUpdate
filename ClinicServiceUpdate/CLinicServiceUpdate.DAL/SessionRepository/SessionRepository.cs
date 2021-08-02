@@ -11,6 +11,11 @@ namespace CLinicServiceUpdate.DAL.SessionRepository
 			throw new NotImplementedException();
 		}
 
+		public void DeleteSession(int sessionId)
+		{
+			throw new NotImplementedException();
+		}
+
 		public List<Session> GetActualSessionsForClient(int clientId, DateTime actualDateTime)
 		{
 			throw new NotImplementedException();

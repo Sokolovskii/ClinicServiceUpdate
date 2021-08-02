@@ -56,5 +56,11 @@ namespace CLinicServiceUpdate.DAL.SessionRepository
 		/// <param name="DateTimeOfBegin">Дата и время начала сеанса</param>
 		/// <param name="DateTimeOfEnd">Дата и время конца сеанса</param>
 		void AddNewSession(int clientId, int doctorId, DateTime DateTimeOfBegin, DateTime DateTimeOfEnd);
+
+		/// <summary>
+		/// Удаление записи
+		/// </summary>
+		/// <param name="sessionId">Идентификатор сессии</param>
+		void DeleteSession(int sessionId);
 	}
 }
