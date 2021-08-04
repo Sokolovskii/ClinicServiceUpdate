@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CLinicServiceUpdate.DAL.Models
+namespace ClinicServiceUpdate.DAL.Models
 {
-	class Request
+	public class Request
 	{
 		public int Id { get; set; }
 		public int SenderId { get; set; }
@@ -10,6 +10,7 @@ namespace CLinicServiceUpdate.DAL.Models
 		public int TypeId { get; set; }
 		public string Content { get; set; }
 		public DateTime DateOfCreate { get; set; }
-		public DateTime DateOfCOmplete { get; set; }
+		public DateTime DateOfComplete { get; set; }
+		public bool Status { get; set; }
 	}
 }

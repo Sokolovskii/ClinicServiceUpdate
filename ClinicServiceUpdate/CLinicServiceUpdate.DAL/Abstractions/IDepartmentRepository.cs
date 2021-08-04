@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.DepartmentRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий сущности отделения клиники
 	/// </summary>
-	interface IDepartmentRepository
+	public interface IDepartmentRepository
 	{
 		/// <summary>
 		/// Возвращает отделение по его Id

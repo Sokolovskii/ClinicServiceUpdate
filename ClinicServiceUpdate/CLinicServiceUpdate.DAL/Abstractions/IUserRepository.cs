@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models.UserModels;
+using ClinicServiceUpdate.DAL.Models.UserModels;
 
-namespace CLinicServiceUpdate.DAL.UserRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий пользовательских данных
 	/// </summary>
-	interface IUserRepository
+	public interface IUserRepository
 	{
 		/// <summary>
 		/// Возврат пользователя по его идентификатору

@@ -1,6 +1,6 @@
-﻿namespace CLinicServiceUpdate.DAL.Models
+﻿namespace ClinicServiceUpdate.DAL.Models
 {
-	class Role
+	public class Role
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }
@@ -8,7 +8,7 @@
 
 	}
 
-	class PoliticElem
+	public class PoliticElem
 	{
 		public int RuleId { get; set; }
 		public bool IsActive { get; set; }

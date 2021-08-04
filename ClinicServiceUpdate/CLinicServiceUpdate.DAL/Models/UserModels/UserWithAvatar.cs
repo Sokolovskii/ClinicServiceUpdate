@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CLinicServiceUpdate.DAL.Models.UserModels
+namespace ClinicServiceUpdate.DAL.Models.UserModels
 {
-	class UserWithAvatar : User
+	public class UserWithAvatar : User
 	{
 		public byte[] Avatar;
 

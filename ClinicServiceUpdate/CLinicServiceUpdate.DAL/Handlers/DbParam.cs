@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CLinicServiceUpdate.DAL
+﻿namespace ClinicServiceUpdate.DAL.Handlers
 {
 	/// <summary>
 	/// Класс, описывающий пару ключ-значение для параметров процедур sql
 	/// </summary>
-	class DbParam
+	public class DbParam
 	{
 		public string Key { get; }
 

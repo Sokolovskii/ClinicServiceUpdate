@@ -1,6 +1,6 @@
-﻿namespace CLinicServiceUpdate.DAL.Models
+﻿namespace ClinicServiceUpdate.DAL.Models
 {
-	class Department
+	public class Department
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

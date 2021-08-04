@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.TypeOfRequestRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
-	interface ITypeOfRequestRepository
+	public interface ITypeOfRequestRepository
 	{
 		/// <summary>
 		/// Врзврат типа запроса по его Id

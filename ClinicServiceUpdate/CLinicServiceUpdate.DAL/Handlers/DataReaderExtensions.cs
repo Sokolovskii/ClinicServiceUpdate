@@ -1,10 +1,30 @@
 ﻿using System;
 using System.Data;
 
-namespace CLinicServiceUpdate.DAL
+namespace ClinicServiceUpdate.DAL.Handlers
 {
 	public static class DataReaderExtensions
 	{
+		/// <summary>
+		/// Конвертирует Object из ридера в boolean и возвращает его
+		/// </summary>
+		/// <param name="reader">Ридер</param>
+		/// <param name="name">Имя столбца таблицы, которую прочитал ридер</param>
+		public static bool GetBoolean(this IDataReader reader, string name)
+		{
+			return Convert.ToBoolean(reader[name]);
+		}
+
+		/// <summary>
+		/// Конвертирует Object из ридера в DateTime и возвращает его
+		/// </summary>
+		/// <param name="reader">Ридер</param>
+		/// <param name="name">Имя слолбца таблицы, которую прочитал ридер</param>
+		public static DateTime GetDateTime(this IDataReader reader, string name)
+		{
+			return Convert.ToDateTime(reader[name]);
+		}
+
 		/// <summary>
 		/// Конвертирует Object из ридера в DateTime и возвращает значение Date 
 		/// </summary>

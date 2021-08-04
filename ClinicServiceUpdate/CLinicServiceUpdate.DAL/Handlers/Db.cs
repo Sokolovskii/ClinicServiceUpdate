@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace CLinicServiceUpdate.DAL
+namespace ClinicServiceUpdate.DAL.Handlers
 {
 	/// <summary>
 	/// Класс, содержащий логику исполнения sql запросов в ADO.NET
 	/// </summary>
-	class Db
+	public class Db
 	{
 		/// <summary>
 		/// Строка подключения к БД
@@ -20,6 +20,26 @@ namespace CLinicServiceUpdate.DAL
 		/// </summary>
 		public Db() { }
 
+		/// <summary>
+		/// Добавляет объект в базу, после чего возвращает его идентификатор
+		/// </summary>
+		/// <param name="storedProcedure">Название процедуры</param>
+		/// <param name="args">Аргументы для добавления</param>
+		/// <returns>Идентификатор строки</returns>
+		public int AddItemReturnId(string storedProcedure, params DbParam[] args)
+		{
+			using(var connection = new SqlConnection(connectionString))
+			{
+				var command = OpenConnection(storedProcedure, connection);
+
+				foreach(var dbParam in args)
+				{
+					command.Parameters.AddWithValue(dbParam.Key, dbParam.Value);
+				}
+
+				return (int)(command.ExecuteScalar());
+			}
+		}
 		/// <summary>
 		/// Обобщенный метод получения списка из бд
 		/// </summary>

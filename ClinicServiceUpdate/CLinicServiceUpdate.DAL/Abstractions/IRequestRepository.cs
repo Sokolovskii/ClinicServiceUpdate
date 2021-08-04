@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.RequestRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий заявок
 	/// </summary>
-	interface IRequestRepository
+	public interface IRequestRepository
 	{
 		/// <summary>
 		/// Формирование заявки
@@ -17,7 +17,7 @@ namespace CLinicServiceUpdate.DAL.RequestRepository
 		/// <param name="typeId">Идентификатор типа заявки</param>
 		/// <param name="content">Текст заявки</param>
 		/// <param name="dateTimeOfCreate">Дата и время формирования</param>
-		void AddNewRequest(int senderId, int recieverId, int typeId, string content, DateTime dateTimeOfCreate);
+		void AddNewRequest(int senderId, int recieverId, int typeId, string content);
 
 		/// <summary>
 		/// Закрытие и одобрение заявки

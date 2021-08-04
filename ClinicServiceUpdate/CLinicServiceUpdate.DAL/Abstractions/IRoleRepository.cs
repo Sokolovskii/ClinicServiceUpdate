@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.RoleRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий ролей
 	/// </summary>
-	interface IRoleRepository
+	public interface IRoleRepository
 	{
 		/// <summary>
 		/// Возврат роли по её идентификатору
@@ -26,7 +26,7 @@ namespace CLinicServiceUpdate.DAL.RoleRepository
 		/// </summary>
 		/// <param name="name">Название роли</param>
 		/// <param name="politicElems">Комбинация политик</param>
-		void AddNewRole(string name, params PoliticElem[] politicElems);
+		void AddNewRole(string name, PoliticElem[] politicElems);
 
 	}
 }

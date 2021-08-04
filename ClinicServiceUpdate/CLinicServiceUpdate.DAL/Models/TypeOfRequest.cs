@@ -1,6 +1,6 @@
-﻿namespace CLinicServiceUpdate.DAL.Models
+﻿namespace ClinicServiceUpdate.DAL.Models
 {
-	class TypeOfRequest
+	public class TypeOfRequest
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

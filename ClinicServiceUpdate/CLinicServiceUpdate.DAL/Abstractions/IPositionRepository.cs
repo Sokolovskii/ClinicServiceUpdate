@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.PositionRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозтиторий должностей
 	/// </summary>
-	interface IPositionRepository
+	public interface IPositionRepository
 	{
 		/// <summary>
 		/// Возврат должности по её идентификатору

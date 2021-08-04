@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.SessionRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий записей к врачу
 	/// </summary>
-	interface ISessionRepository
+	public interface ISessionRepository
 	{
 		/// <summary>
 		/// Возвращает запись по ее идентификатору

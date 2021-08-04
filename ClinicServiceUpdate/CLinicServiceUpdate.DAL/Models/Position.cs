@@ -1,6 +1,6 @@
-﻿namespace CLinicServiceUpdate.DAL.Models
+﻿namespace ClinicServiceUpdate.DAL.Models
 {
-	class Position
+	public class Position
 	{
 		public int Id { get; set; }
 		public string Name { get; set; }

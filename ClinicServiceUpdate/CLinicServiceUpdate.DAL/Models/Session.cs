@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace CLinicServiceUpdate.DAL.Models
+namespace ClinicServiceUpdate.DAL.Models
 {
-	class Session
+	public class Session
 	{
 		public int Id { get; set; }
 		public int ClientId { get; set; }
 		public int DoctorId { get; set; }
-		public DateTime dateTimeBegin { get; set; }
-		public DateTime dateTimeEnd { get; set; }
+		public DateTime DateTimeBegin { get; set; }
+		public DateTime DateTimeEnd { get; set; }
 	}
 }

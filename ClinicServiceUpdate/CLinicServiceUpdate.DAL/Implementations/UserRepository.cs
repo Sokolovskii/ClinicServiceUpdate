@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models.UserModels;
+using ClinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Abstractions;
+using ClinicServiceUpdate.DAL.Handlers;
 
-namespace CLinicServiceUpdate.DAL.UserRepository
+namespace ClinicServiceUpdate.DAL.Implementations
 {
 	/// <summary>
 	/// Реализация интерфейса репозитория пользователя
 	/// </summary>
 	/// <inheritdoc cref="IUserRepository"/>
-	class UserRepository : IUserRepository
+	public class UserRepository : IUserRepository
 	{
 		public void AddNewAvatar(int userId, byte[] photo)
 		{
@@ -30,12 +33,12 @@ namespace CLinicServiceUpdate.DAL.UserRepository
 			throw new NotImplementedException();
 		}
 
-		public User GetUserById(int userId)
+		public UserWithAvatar GetUserById(int userId)
 		{
 			throw new NotImplementedException();
 		}
 
-		public User GetUserByLogin(string login)
+		public UserWithAvatar GetUserByLogin(string login)
 		{
 			throw new NotImplementedException();
 		}

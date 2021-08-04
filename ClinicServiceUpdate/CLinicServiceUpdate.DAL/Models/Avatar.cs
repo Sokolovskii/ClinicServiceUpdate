@@ -1,6 +1,6 @@
-﻿namespace CLinicServiceUpdate.DAL.Models
+﻿namespace ClinicServiceUpdate.DAL.Models
 {
-	class Avatar
+	public class Avatar
 	{
 		public int UserId { get; set; }
 		public byte[] Photo { get; set; }

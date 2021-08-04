@@ -1,12 +1,12 @@
 ﻿using System;
-using CLinicServiceUpdate.DAL.Models;
+using ClinicServiceUpdate.DAL.Models;
 
-namespace CLinicServiceUpdate.DAL.ScheduleRepository
+namespace ClinicServiceUpdate.DAL.Abstractions
 {
 	/// <summary>
 	/// Репозиторий расписания
 	/// </summary>
-	interface IScheduleRepository
+	public interface IScheduleRepository
 	{
 		/// <summary>
 		/// Добавление нового расписания для работника
@@ -21,6 +21,6 @@ namespace CLinicServiceUpdate.DAL.ScheduleRepository
 		/// </summary>
 		/// <param name="userId">Идентификатор пользователя</param>
 		/// <returns>Экземпляр расписания</returns>
-		Schedule GetActualScheduleByUserId(int userId);
+		Schedule GetActualScheduleByUserId(int userId, DateTime actualDateTime);
 	}
 }
