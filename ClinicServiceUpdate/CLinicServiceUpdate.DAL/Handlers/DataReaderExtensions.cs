@@ -6,6 +6,16 @@ namespace ClinicServiceUpdate.DAL.Handlers
 	public static class DataReaderExtensions
 	{
 		/// <summary>
+		/// Конвертирует Object из ридера в массив байт и возвращает его
+		/// </summary>
+		/// <param name="reader">ридер</param>
+		/// <param name="name">Имя столбца таблицы, которую прочитал ридер</param>
+		public static byte[] GetBytes(this IDataReader reader, string name)
+		{
+			return (byte[])(reader[name]);
+		}
+
+		/// <summary>
 		/// Конвертирует Object из ридера в boolean и возвращает его
 		/// </summary>
 		/// <param name="reader">Ридер</param>

@@ -16,11 +16,11 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		UserWithAvatar GetUserById(int userId);
 
 		/// <summary>
-		/// Возврат пользователя по логину
+		/// Возвратхеша пароля по логину
 		/// </summary>
 		/// <param name="login">Логин</param>
 		/// <returns>Экземпляр пользователя</returns>
-		UserWithAvatar GetUserByLogin(string login);
+		string GetPassHashByLogin(string login);
 
 		/// <summary>
 		/// Возврат всех пользователей, занимающих указанную должность

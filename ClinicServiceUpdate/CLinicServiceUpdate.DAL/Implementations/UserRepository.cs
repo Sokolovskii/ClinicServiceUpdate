@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ClinicServiceUpdate.DAL.Models.UserModels;
 using ClinicServiceUpdate.DAL.Models;
 using ClinicServiceUpdate.DAL.Abstractions;
 using ClinicServiceUpdate.DAL.Handlers;
+using System.Data;
 
 namespace ClinicServiceUpdate.DAL.Implementations
 {
@@ -13,69 +13,138 @@ namespace ClinicServiceUpdate.DAL.Implementations
 	/// <inheritdoc cref="IUserRepository"/>
 	public class UserRepository : IUserRepository
 	{
+
+		private readonly Db _db;
+
+		public UserRepository(Db db)
+		{
+			_db = db;
+		}
 		public void AddNewAvatar(int userId, byte[] photo)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("AddNewAvatar",
+				new DbParam("@UserId", userId),
+				new DbParam("@Photo", photo));
 		}
 
 		public void AddNewUser(string userName, string login, string passHash)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("AddNewUser",
+				new DbParam("@Name", userName),
+				new DbParam("@Login", login),
+				new DbParam("@PassHash", passHash));
 		}
 
 		public void DeleteAvatar(int userId)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("DeleteAvatar",
+				new DbParam("@UserId", userId));
 		}
 
 		public Avatar GetAvatarByUserId(int userId)
 		{
-			throw new NotImplementedException();
+			return _db.GetItem("GetAvatarByUserId", AvatarFromReader,
+				new DbParam("@UserId", userId));
 		}
 
 		public UserWithAvatar GetUserById(int userId)
 		{
-			throw new NotImplementedException();
+			return _db.GetItem("GetUserById", UserWithAvatarFromReader,
+				new DbParam("@Id", userId));
 		}
 
-		public UserWithAvatar GetUserByLogin(string login)
+		public string GetPassHashByLogin(string login)
 		{
-			throw new NotImplementedException();
+			return _db.GetItem("GetPassHashByUserLogin", PassHashFromReader,
+				new DbParam("@Login", login));
 		}
 
 		public IEnumerable<User> GetUsersByDepartment(int departmentId)
 		{
-			throw new NotImplementedException();
+			return _db.GetList("GetUsersByDepartmentId", UserFromReader,
+				new DbParam("@DepartmentId", departmentId));
 		}
 
 		public IEnumerable<User> GetUsersByPosition(int positionId)
 		{
-			throw new NotImplementedException();
+			return _db.GetList("GetUsersByPositionId", UserFromReader,
+				new DbParam("@PositionId", positionId));
 		}
 
 		public void UpdateUserEmail(int userId, string newEmail)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("UpdateUserEmail",
+				new DbParam("@Id", userId),
+				new DbParam("@EMail", newEmail));
 		}
 
 		public void UpdateUserName(int userId, string newUserName)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("UpdateUserName",
+				new DbParam("@Id", userId),
+				new DbParam("@Name", newUserName));
 		}
 
 		public void UpdateUserPassHash(int userId, int newPassHash)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("UpdatePassHash",
+				new DbParam("@Id", userId),
+				new DbParam("@Name", newPassHash));
 		}
 
 		public void UpdateUserPosition(int userId, int newPositionId)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("UpdateUserPosition",
+				new DbParam("@Id", userId),
+				new DbParam("@Name", newPositionId));
 		}
 
 		public void UpdateUserRole(int userId, int roleId)
 		{
-			throw new NotImplementedException();
+			_db.ExecuteNonQuery("UpdateUserName",
+				new DbParam("@Id", userId),
+				new DbParam("@Name", roleId));
+		}
+
+		private User UserFromReader(IDataReader reader)
+		{
+			return new User
+			{
+				Id = reader.GetIntOrZero("Id"),
+				Name = reader.GetString("Name"),
+				Login = reader.GetString("Login"),
+				Email = reader.GetString("EMail"),
+				RoleId = reader.GetIntOrZero("RoleId"),
+				PositionId = reader.GetIntOrZero("PositionId")
+			};
+		}
+
+		private string PassHashFromReader(IDataReader reader)
+		{
+			return reader.GetString("PassHash");
+		}
+
+		private UserWithAvatar UserWithAvatarFromReader(IDataReader reader)
+		{
+			return new UserWithAvatar
+			{
+				Id = reader.GetIntOrZero("Id"),
+				Name = reader.GetString("Name"),
+				Login = reader.GetString("Login"),
+				Email = reader.GetString("EMail"),
+				RoleId = reader.GetIntOrZero("RoleId"),
+				PositionId = reader.GetIntOrZero("PositionId"),
+				Avatar = reader.GetBytes("Photo")
+			};
+		}
+
+		private Avatar AvatarFromReader(IDataReader reader)
+		{
+			return new Avatar
+			{
+				UserId = reader.GetIntOrZero("UserId"),
+				Photo = reader.GetBytes("Photo")
+			};
 		}
 	}
 }
