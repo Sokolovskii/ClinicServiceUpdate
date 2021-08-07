@@ -141,7 +141,6 @@ IF not exists(SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 BEGIN
 	CREATE TABLE Schedules
 	(
-		[Id] INT NOT NULL,
 		[UserId] INT NOT NULL,
 		[Monday_Begining] TIME,
 		[Monday_Ending] TIME,
@@ -159,7 +158,6 @@ BEGIN
 		[Sunday_Ending] TIME,
 		[Actualisation_Date] DATE NOT NULL
 
-		CONSTRAINT PK_Schedules PRIMARY KEY(Id)
 		CONSTRAINT FK_Schedules_To_Users FOREIGN KEY(UserId) REFERENCES Users(Id),
 	)
 END
@@ -176,7 +174,8 @@ BEGIN
 		[Type_Id] INT NOT NULL,
 		[Content] NVARCHAR(MAX),
 		[Date_Of_Create] DATETIME2 NOT NULL,
-		[Date_Of_Complete] DATETIME2
+		[Date_Of_Complete] DATETIME2,
+		[Status] BIT
 
 		CONSTRAINT PK_Requests PRIMARY KEY(Id),
 		CONSTRAINT FK_RequestsSender_To_Users FOREIGN KEY(Sender_Id) REFERENCES Users(Id),
