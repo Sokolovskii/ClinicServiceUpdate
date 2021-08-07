@@ -1,7 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CLinicServiceUpdate.DAL\ClinicServiceUpdate.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ExternalServices\" />
+    <Folder Include="ProxyExternalServices\" />
+  </ItemGroup>
 
 </Project>
