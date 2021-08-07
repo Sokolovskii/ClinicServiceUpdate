@@ -1,3 +1,6 @@
 /.vs
 CLinicServiceUpdate.DAL/bin
 CLinicServiceUpdate.DAL/obj
+
+CLinicServiceUpdate.BLL/bin
+CLinicServiceUpdate.BLL/obj
