@@ -3,8 +3,9 @@
 	/// <summary>
 	/// Модель пользователя с аватаром
 	/// </summary>
-	public class UserWithAvatar : User
+	public class UserWithAvatar
 	{
-		public byte[] Avatar;
+		public User User { get; set; }
+		public byte[] Avatar { get; set; }
 	}
 }

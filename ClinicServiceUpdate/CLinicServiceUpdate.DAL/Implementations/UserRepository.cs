@@ -128,12 +128,7 @@ namespace ClinicServiceUpdate.DAL.Implementations
 		{
 			return new UserWithAvatar
 			{
-				Id = reader.GetIntOrZero("Id"),
-				Name = reader.GetString("Name"),
-				Login = reader.GetString("Login"),
-				Email = reader.GetString("EMail"),
-				RoleId = reader.GetIntOrZero("RoleId"),
-				PositionId = reader.GetIntOrZero("PositionId"),
+				User = UserFromReader(reader),
 				Avatar = reader.GetBytes("Photo")
 			};
 		}
