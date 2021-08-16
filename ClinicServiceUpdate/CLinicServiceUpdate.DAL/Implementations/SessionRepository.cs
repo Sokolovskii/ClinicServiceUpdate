@@ -33,28 +33,35 @@ namespace ClinicServiceUpdate.DAL.Implementations
 				new DbParam("@Id", sessionId));
 		}
 
-		public List<Session> GetActualSessionsForClient(int clientId, DateTime actualDateTime)
+		public IEnumerable<Session> GetActualSessionsForClient(int clientId, DateTime actualDateTime)
 		{
 			return _db.GetList("GetActualSessionsForClient", SessionFromReader,
 				new DbParam("@ClientId", clientId),
 				new DbParam("@ActualDateTime", actualDateTime));
 		}
 
-		public List<Session> GetActualSessionsForDoctor(int doctorId, DateTime actualDateTime)
+		public IEnumerable<Session> GetActualSessionsForDoctor(int doctorId, DateTime actualDateTime)
 		{
 			return _db.GetList("GetActualSessionsForDoctor", SessionFromReader,
 				new DbParam("@DoctorId", doctorId),
 				new DbParam("@ActualDateTime", actualDateTime));
 		}
 
-		public List<Session> GetNonActualSessionsForClient(int clientId, DateTime actualDateTime)
+		public IEnumerable<Session> GetActualSessionsOnDay(int doctorId, DateTime actualDate)
+		{
+			return _db.GetList("GetActualSessionsOnDay", SessionFromReader,
+				new DbParam("@DoctorId", doctorId),
+				new DbParam("@Date", actualDate.Date));
+		}
+
+		public IEnumerable<Session> GetNonActualSessionsForClient(int clientId, DateTime actualDateTime)
 		{
 			return _db.GetList("GetNonActualSessionsForClient", SessionFromReader,
 				new DbParam("@ClientId", clientId),
 				new DbParam("@ActualDateTime", actualDateTime));
 		}
 
-		public List<Session> GetNonActualSessionsForDoctor(int doctorId, DateTime actualDateTime)
+		public IEnumerable<Session> GetNonActualSessionsForDoctor(int doctorId, DateTime actualDateTime)
 		{
 			return _db.GetList("GetNonActualSessionsForDoctor", SessionFromReader,
 				new DbParam("@DoctorId", doctorId),

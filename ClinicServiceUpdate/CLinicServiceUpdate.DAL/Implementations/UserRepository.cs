@@ -53,6 +53,12 @@ namespace ClinicServiceUpdate.DAL.Implementations
 				new DbParam("@Id", userId));
 		}
 
+		public UserWithAvatar GetUserByLogin(string login)
+		{
+			return _db.GetItem("GetUserByLogin", UserWithAvatarFromReader,
+				new DbParam("Login", login));
+		}
+
 		public string GetPassHashByLogin(string login)
 		{
 			return _db.GetItem("GetPassHashByUserLogin", PassHashFromReader,
@@ -85,7 +91,7 @@ namespace ClinicServiceUpdate.DAL.Implementations
 				new DbParam("@Name", newUserName));
 		}
 
-		public void UpdateUserPassHash(int userId, int newPassHash)
+		public void UpdateUserPassHash(int userId, string newPassHash)
 		{
 			_db.ExecuteNonQuery("UpdatePassHash",
 				new DbParam("@Id", userId),
@@ -141,5 +147,7 @@ namespace ClinicServiceUpdate.DAL.Implementations
 				Photo = reader.GetBytes("Photo")
 			};
 		}
+
+
 	}
 }

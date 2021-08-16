@@ -6,13 +6,13 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.RequestService
 	/// <summary>
 	/// Интерфейс внешней службы заявок
 	/// </summary>
-	interface IRequestExternalService
+	public interface IRequestExternalService
 	{
 		/// <summary>
 		/// Добавление заявки
 		/// </summary>
 		/// <param name="request">Заявка</param>
-		void AddRequest(Request request);
+		void AddRequest(int senderId, int recieverId, int typeId, string content);
 
 		/// <summary>
 		/// Подтверждение заявки

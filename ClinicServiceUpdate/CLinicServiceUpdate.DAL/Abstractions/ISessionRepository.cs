@@ -17,12 +17,20 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		Session GetSessionById(int sessionId);
 
 		/// <summary>
+		/// Возврат списка актуальных записей на конкретный день
+		/// </summary>
+		/// <param name="doctorId">Идентификатор врача, записи к которому запрашиваются</param>
+		/// <param name="actualDate">Дата, на которую запрашиваются записи</param>
+		/// <returns>Коллекция записей</returns>
+		IEnumerable<Session> GetActualSessionsOnDay(int doctorId, DateTime actualDate);
+
+		/// <summary>
 		/// Возврат всех действительных записей для клиента
 		/// </summary>
 		/// <param name="clientId">Идентификатор клиента</param>
 		/// <param name="actualDateTime">Актуальное дата и время обращения</param>
 		/// <returns>Колекция экземпляров записей</returns>
-		List<Session> GetActualSessionsForClient(int clientId, DateTime actualDateTime);
+		IEnumerable<Session> GetActualSessionsForClient(int clientId, DateTime actualDateTime);
 
 		/// <summary>
 		/// Вовзрат всех недействиетльных или прошедших записей для клиента
@@ -30,7 +38,7 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// <param name="clientId">Идентификатор клиента</param>
 		/// <param name="actualDateTime">Актуальное дата и время обращения</param>
 		/// <returns>Коллекция экземпляров записей</returns>
-		List<Session> GetNonActualSessionsForClient(int clientId, DateTime actualDateTime);
+		IEnumerable<Session> GetNonActualSessionsForClient(int clientId, DateTime actualDateTime);
 
 		/// <summary>
 		/// Возврат всех актуальных записей для доктора
@@ -38,7 +46,7 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// <param name="doctorId">Идентификатор врача</param>
 		/// <param name="actualDateTime">Актуальное дата и время обращения</param>
 		/// <returns>Коллекция экземпляров записей</returns>
-		List<Session> GetActualSessionsForDoctor(int doctorId, DateTime actualDateTime);
+		IEnumerable<Session> GetActualSessionsForDoctor(int doctorId, DateTime actualDateTime);
 
 		/// <summary>
 		/// Возврат всех неактуальных или прошедших записей для доктора
@@ -46,7 +54,7 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// <param name="doctorId">Идентификатор врача</param>
 		/// <param name="actualDateTime">Актуальное дата и время обращения</param>
 		/// <returns>Коллекция экземпляров записей</returns>
-		List<Session> GetNonActualSessionsForDoctor(int doctorId, DateTime actualDateTime);
+		IEnumerable<Session> GetNonActualSessionsForDoctor(int doctorId, DateTime actualDateTime);
 
 		/// <summary>
 		/// Добавление новой записи в базу

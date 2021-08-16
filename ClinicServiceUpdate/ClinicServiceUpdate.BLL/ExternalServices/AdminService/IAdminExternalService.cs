@@ -5,7 +5,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AdminService
 	/// <summary>
 	/// Интерфейс внешней службы администратора
 	/// </summary>
-	interface IAdminExternalService
+	public interface IAdminExternalService
 	{
 		/// <summary>
 		/// Добавление новой должности

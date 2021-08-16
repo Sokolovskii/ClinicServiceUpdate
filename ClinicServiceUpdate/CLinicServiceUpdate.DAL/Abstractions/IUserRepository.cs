@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ClinicServiceUpdate.DAL.Models.UserModels;
+using ClinicServiceUpdate.DAL.Models;
 
 namespace ClinicServiceUpdate.DAL.Abstractions
 {
@@ -14,12 +15,19 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// <param name="userId">Идентификатор пользователя</param>
 		/// <returns>Экземпляр пользователя</returns>
 		UserWithAvatar GetUserById(int userId);
+		
+		/// <summary>
+		/// Возврат пользователя по логину
+		/// </summary>
+		/// <param name="login">Логин пользователя</param>
+		/// <returns>Экземпляр пользователя</returns>
+		UserWithAvatar GetUserByLogin(string login);
 
 		/// <summary>
-		/// Возвратхеша пароля по логину
+		/// Возврат хеша пароля по логину
 		/// </summary>
 		/// <param name="login">Логин</param>
-		/// <returns>Экземпляр пользователя</returns>
+		/// <returns>хэш пароля</returns>
 		string GetPassHashByLogin(string login);
 
 		/// <summary>
@@ -43,6 +51,13 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// <param name="login">Логин</param>
 		/// <param name="passHash">Пароль</param>
 		void AddNewUser(string userName, string login, string passHash);
+
+		/// <summary>
+		/// Возвращает аватар пользователя по его Id
+		/// </summary>
+		/// <param name="userId">Идентификатор пользователя</param>
+		/// <returns>Аватар пользователя</returns>
+		Avatar GetAvatarByUserId(int userId);
 
 		/// <summary>
 		/// Добавление аватара
@@ -90,6 +105,6 @@ namespace ClinicServiceUpdate.DAL.Abstractions
 		/// </summary>
 		/// <param name="userId">Идентификатор пользователя</param>
 		/// <param name="newPassHash">Новый хэш пароля</param>
-		void UpdateUserPassHash(int userId, int newPassHash);
+		void UpdateUserPassHash(int userId, string newPassHash);
 	}
 }

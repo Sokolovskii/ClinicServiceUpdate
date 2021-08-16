@@ -6,7 +6,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AccountService
 	/// <summary>
 	/// Интерфейс внешней службы личного кабинета
 	/// </summary>
-	interface IAccountExternalService
+	public interface IAccountExternalService
 	{
 		/// <summary>
 		/// Обновляет имя пользователя
@@ -26,8 +26,8 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AccountService
 		/// Обновлялет пароль пользователя
 		/// </summary>
 		/// <param name="userId">Индентификатор пользователя</param>
-		/// <param name="password">Пароль</param>
-		void UpdatePassword(int userId, string password);
+		/// <param name="passHash">Хэш пароля</param>
+		void UpdatePassword(int userId, string passHash);
 
 		/// <summary>
 		/// Обновляет аватар пользователя

@@ -13,7 +13,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.SessionService
 		/// Создание сессии
 		/// </summary>
 		/// <param name="session">Полученный экземпляр DTO сессии</param>
-		void CreateSession(Session session);
+		void CreateSession(int clientId, int doctorId, DateTime DateTimeOfBegin, DateTime DateTimeOfEnd);
 
 		/// <summary>
 		/// Удаление сессии
@@ -29,18 +29,32 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.SessionService
 		Session GetSession(int sessionId);
 
 		/// <summary>
-		/// Выдача списка сессий, забронированных клиентом
+		/// Выдача списка актуальных сессий, забронированных клиентом
 		/// </summary>
 		/// <param name="clientId">Идентификатор клиента</param>
 		/// <returns>Коллекция сессий</returns>
-		IEnumerable<Session> GetSessionsForClient(int clientId);
+		IEnumerable<Session> GetActualSessionsForClient(int clientId);
 
 		/// <summary>
-		/// Выдача списка сессий, забронированных на врача
+		/// Выдача списка неактуальных сессий, забронированных клиентом
+		/// </summary>
+		/// <param name="clientId">Идентификатор клиента</param>
+		/// <returns>Коллекция сессий</returns>
+		IEnumerable<Session> GetNonActualSessionsForClient(int clientId);
+
+		/// <summary>
+		/// Выдача списка актуальных сессий, забронированных на врача
 		/// </summary>
 		/// <param name="doctorId">Идентификатор врача</param>
 		/// <returns>Коллекция сессий</returns>
-		IEnumerable<Session> GetSessionsForDoctor(int doctorId);
+		IEnumerable<Session> GetActualSessionsForDoctor(int doctorId);
+
+		/// <summary>
+		/// Выдача списка неактуальных сессий, забронированных на врача
+		/// </summary>
+		/// <param name="doctorId">Идентификатор врача</param>
+		/// <returns>Коллекция сессий</returns>
+		IEnumerable<Session> GetNonActualSessionsForDoctor(int doctorId);
 
 		/// <summary>
 		/// Выдача всех сессий на указанного врача и дату

@@ -7,7 +7,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.ClinicInformationService
 	/// <summary>
 	/// Интерфейс внешней службы предоставления информации о больнице
 	/// </summary>
-	interface IClinicInformationExternalService
+	public interface IClinicInformationExternalService
 	{
 		/// <summary>
 		/// Возврат всех отделений в больнице

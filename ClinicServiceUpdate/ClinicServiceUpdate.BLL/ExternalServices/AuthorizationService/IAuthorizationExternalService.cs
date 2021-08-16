@@ -5,7 +5,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AuthorizationService
 	/// <summary>
 	/// Интерфейс внешней службы авторизации
 	/// </summary>
-	interface IAuthorizationExternalService
+	public interface IAuthorizationExternalService
 	{
 		/// <summary>
 		/// Авторизация существующего пользователя
@@ -13,7 +13,7 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AuthorizationService
 		/// <param name="login">логин</param>
 		/// <param name="password">пароль</param>
 		/// <returns>Юзер из базы</returns>
-		User LogIn(string login, string password);
+		UserWithAvatar LogIn(string login, string password);
 
 		/// <summary>
 		/// Регистрация пользователя в системе
@@ -22,12 +22,6 @@ namespace ClinicServiceUpdate.BLL.ExternalServices.AuthorizationService
 		/// <param name="name">Имя пользователя</param>
 		/// <param name="password">Пароль</param>
 		/// <returns>Юзер из базы</returns>
-		User Register(string login, string name, string password);
-
-		/// <summary>
-		/// Выводит юзера из системы
-		/// </summary>
-		/// <param name="userId">Идентификатор пользователя</param>
-		void LogOut(int userId);
+		UserWithAvatar Register(string login, string name, string password);
 	}
 }
